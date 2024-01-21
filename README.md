@@ -113,7 +113,7 @@ Both quantitative and qualitative results are presented in this section.
 The image below showcases the outcomes of the final registration for each method employed in this project, providing a visual comparison of their performance:
 
 <p align="center">
-<img src="img/Preprocessing.png" alt="Example of the preprocessing employed" width="600"/>
+<img src="img/Results.png" alt="Example of the preprocessing employed" width="600"/>
 <br>
 <em>Fig. 3. Fig. 5. Example of the registration obtained with the different approaches implemented in this project. A) Moving Image B) Fixed Image C) Affine +
 Normalization + CLAHE, D) Only Affine, E) Affine + Segmentation + Normalization + CLAHE, F) Affine + Segmentation , G) Affine + Bspline set 1 +
