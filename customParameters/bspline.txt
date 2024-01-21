@@ -1,0 +1,59 @@
+// Internal Pixel Types
+(FixedInternalImagePixelType "float")
+(MovingInternalImagePixelType "float")
+
+// Main Components
+(Registration "MultiResolutionRegistration")
+(Interpolator "LinearInterpolator")
+(ResampleInterpolator "FinalBSplineInterpolator")
+(Resampler "DefaultResampler")
+(WriteResultImage "true")
+
+
+// Image Pyramids
+(FixedImagePyramid "FixedSmoothingImagePyramid")
+(MovingImagePyramid "MovingSmoothingImagePyramid")
+
+// Core Registration
+(Optimizer "AdaptiveStochasticGradientDescent")
+(Transform "BSplineTransform")
+(Metric "AdvancedMattesMutualInformation")
+
+// B-Spline Transformation
+(FinalGridSpacingInVoxels 8.0 8.0 4.0)
+
+// Transformation Settings
+(HowToCombineTransforms "Compose")
+(AutomaticScalesEstimation "true")	
+(AutomaticTransformInitialization "true")	
+(NumberOfHistogramBins 64)
+
+// Multi-resolution
+(NumberOfResolutions 6)
+(ImagePyramidSchedule 16 16 3  10 10 2  8 8 2  4 4 1  2 2 1  1 1 1) 
+
+// Optimizer Parameters
+(AutomaticParameterEstimation "true") 
+(UseAdaptiveStepSizes "true")
+(MaximumNumberOfIterations 650)
+(ASGDParameterEstimationMethod  "DisplacementDistribution") 
+(SP_a 1.0)
+(SP_A 45.0)
+(SP_alpha 1.0)
+(SigmoidMax 1.0)
+(SigmoidMin -0.800000)
+(SigmoidScale 0.1)
+
+// Image Sampling
+(MaximumNumberOfSamplingAttempts 20)
+(NumberOfSpatialSamples 25000)
+
+// Sampling Strategy
+(NewSamplesEveryIteration "true")
+(UseRandomSampleRegion "true")
+(ImageSampler "RandomCoordinate")
+//(SampleRegionSize 100.0 100.0 35.0)  
+
+// Interpolation Settings
+(BSplineInterpolationOrder 3)
+(FinalBSplineInterpolationOrder 3)

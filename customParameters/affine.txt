@@ -1,0 +1,89 @@
+// ********** Image Types
+
+(FixedInternalImagePixelType "float")
+(FixedImageDimension 3)
+(MovingInternalImagePixelType "float")
+(MovingImageDimension 3)
+
+// ********** Components
+
+(Registration "MultiResolutionRegistration")
+(FixedImagePyramid "FixedRecursiveImagePyramid")
+(MovingImagePyramid "MovingRecursiveImagePyramid")
+(Interpolator "BSplineInterpolator")
+(Metric "AdvancedNormalizedCorrelation")
+(Optimizer "AdaptiveStochasticGradientDescent")
+(ResampleInterpolator "FinalBSplineInterpolator")
+(Resampler "DefaultResampler")
+(Transform "AffineTransform")
+
+// ********** Pyramid
+
+// Total number of resolutions
+(NumberOfResolutions 5)
+(ImagePyramidSchedule 16 8 4 2 1)
+
+// ********** Transform
+
+(AutomaticScalesEstimation "true")
+(AutomaticTransformInitialization "true")
+(HowToCombineTransforms "Compose")
+
+// ********** Optimizer
+
+// Maximum number of iterations in each resolution level:
+(MaximumNumberOfIterations 5000)
+
+(AutomaticParameterEstimation "true")
+(UseAdaptiveStepSizes "true")
+(ASGDParameterEstimationMethod "Original") // Addressing warning for optimizer estimation method
+
+// ********** Metric
+
+(CheckNumberOfSamples "true") // Ensuring the number of samples is verified
+(UseMultiThreadingForMetrics "true") // Enabling multithreading for metrics calculation
+
+// ********** Several
+
+(WriteTransformParametersEachIteration "false")
+(WriteTransformParametersEachResolution "false")
+(WriteResultImageAfterEachResolution "false")
+(WriteResultImage "true")
+(ShowExactMetricValue "false")
+(ErodeMask "false")
+(UseDirectionCosines "false")
+
+// ********** ImageSampler
+
+//Number of spatial samples used to compute the mutual information in each resolution level:
+(ImageSampler "RandomCoordinate")
+(NumberOfSpatialSamples 2000)
+(NewSamplesEveryIteration "true")
+(UseRandomSampleRegion "false")
+(MaximumNumberOfSamplingAttempts 5)
+
+// ********** Interpolator and Resampler
+
+//Order of B-Spline interpolation used in each resolution level:
+(BSplineInterpolationOrder 1)
+(FixedImageBSplineInterpolationOrder 1) // Addressing warning for fixed image B-Spline interpolation order
+
+//Order of B-Spline interpolation used for applying the final deformation:
+(FinalBSplineInterpolationOrder 3)
+(DefaultPixelValue 0) // Default pixel value for outside-picture pixels
+
+// ********** Additional Parameters for Warnings
+
+// These parameters are added to address specific warnings and provide more control
+(SubtractMean "true")
+(SP_A 20)
+(SigmoidInitialTime 0)
+(MaxBandCovSize 192)
+(NumberOfBandStructureSamples 10)
+(UseConstantStep "false")
+(MaximumStepLengthRatio 1)
+(MaximumStepLength 0.625)
+(NumberOfGradientMeasurements 0)
+(NumberOfJacobianMeasurements 1000)
+(NumberOfSamplesForExactGradient 100000)
+(SigmoidScaleFactor 0.1)

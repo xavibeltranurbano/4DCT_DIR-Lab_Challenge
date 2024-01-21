@@ -1,6 +1,51 @@
 # Image registration of chest CT volumes: 4DCT DIR-Lab Challenge
-Authors: Xavier Beltran Urbano and [Frederik Hartmann](https://github.com/Frederik-Hartmann)
+Authors: Xavier Beltran Urbano and [Frederik Hartmann](https://frederik-hartmann.github.io/)
 
+## Setting Up the Project
+1. Clone the project:
+  ```bash
+  git https://github.com/xavibeltranurbano/4DCT_DIR-Lab_Challenge.git
+  cd 4DCT_DIR-Lab_Challenge
+  ```
+2. Using a virtual environment is strongly recommended.
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+## Reproducing the Results
+The project utilizes the following folder structure
+```bash
+4DCT_DIR-Lab_Challenge/
+├── customParameters
+│   ├── affine.txt
+│   └── bspline.txt
+├── data
+│   ├── copd1
+│   │   ├── copd1_300_eBH_xyz_r1.txt
+│   │   ├── copd1_300_iBH_xyz_r1.txt
+│   │   ├── copd1_eBHCT.img
+│   │   └── copd1_iBHCT.img
+│   ├── copd2
+│   ├── copd3
+│   └── copd4
+├── src
+│   ├── __init__.py
+│   ├── ...
+│   │   ├── __init__.py
+│   │   └── ...
+│   └── voxelmorph
+│       ├── __init__.py
+│       └── ...
+```
+To reproduce the results, execute the following scripts:
+```bash
+python src/openImages.py
+python src/segmentation/main.py
+python src/main.py
+python src/voxelmorph/training.py
+```
+This will read the raw images, save them as a .nii, segment, register and evaluate them. In order to change the parameter set, simply change the parameter folder in src/main.py. The files will be sorted automatically. To ensure a correct workflow please name parameter files using a single dot e.g. **affine.txt**.
 ## Dataset
 
 To implement this project we have utilized a data set consisting of 4 thoracic 4DCT images acquired at the University of Texas M. D. Anderson Cancer Center in Houston TX. Each CT image in the dataset corresponds to different respiratory-binned phases ranging from T00 to T90. The T00 phase represented end-inhalation while the T50 phase represented end-exhalation. Expert manual annotation was conducted to identify 300 landmarks on each patient’s CT images of T00 and T50. In the Figure 1 we can observe an example of the inhalation and exhalation phases of patient 1 with their corresponding landmarks.
