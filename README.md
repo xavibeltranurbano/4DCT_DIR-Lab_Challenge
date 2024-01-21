@@ -27,7 +27,7 @@ Three preprocessing techniques have been employed and tested (see Fig. 2):
 3. **Histogram Equalization:** Contrast-limited adaptive histogram equalization (CLAHE) was applied to each axial slice.
 
 <p align="center">
-<img src="img/Preprocessing.png" alt="Example of the preprocessing employed" width="800"/>
+<img src="img/Preprocessing.png" alt="Example of the preprocessing employed" width="700"/>
 <br>
 <em>Fig. 2. Sequential overview of preprocessing steps in this approach. A) Original image B) Segmented Image C) Normalized and contrast-enhanced (CLAHE)
 image.</em>
