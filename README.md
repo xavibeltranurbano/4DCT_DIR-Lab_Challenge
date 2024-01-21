@@ -15,11 +15,14 @@ featuring corresponding landmarks (red points).</em>
 Our approach can be divided into 2 sections:
 ### · Preprocessing
 
-Three preprocessing techniques have been employed and tested (see Fig 2):
+Three preprocessing techniques have been employed and tested (see Fig. 2):
 
 1. **Segmentation:** Two approaches were tested. The first approach relied on classical image processing techniques, focusing on the intensity range and position of the lung. It involved coarse segmentation to remove the table, contour tracking for refinement, and post-processing to close holes. The second approach used a pretrained UNet model, trained on various datasets for lung segmentation.
    
-2. **Normalization:** After segmentation, min-max normalization was applied using the formula \( x_{normalized} = \frac{x - \min(x)}{\max(x) - \min(x)} \).
+2. **Normalization:** After segmentation, min-max normalization was applied using the formula:
+<p align="center">
+<img src="img/Normalization_Equation.png" alt="Example of the Normalization formula" width="200"/>
+</p>
    
 3. **Histogram Equalization:** Contrast-limited adaptive histogram equalization (CLAHE) was applied to each axial slice.
 
